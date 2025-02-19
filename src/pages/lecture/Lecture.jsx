@@ -21,9 +21,14 @@ const Lecture = ({ user }) => {
   const [btnLoading, setBtnLoading] = useState(false);
   const navigate = useNavigate();
 
-  // if (user && user.role !== "admin" && user.role !== "Instructor") {
-  //   return navigate("/");
-  // }
+  if (
+    user &&
+    user.role !== "admin" &&
+    !user.subscription.includes(params.id) &&
+    user.role !== "Instructor"
+  ) {
+    return navigate("/");
+  }
 
   async function fetchLectures() {
     try {
@@ -88,7 +93,7 @@ const Lecture = ({ user }) => {
         }
       );
 
-      toast.success("submitted", data.message);
+      toast.success("submitted" - data.message);
       setBtnLoading(false);
       setShow(false);
       fetchLectures();

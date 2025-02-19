@@ -10,9 +10,14 @@ const CourseStudy = ({ user }) => {
   const { fetchCourse, course } = useContext(CourseContext);
   const navigate = useNavigate();
 
-  // if (user && user.role !== "admin" && user.role !== "Instructor") {
-  //   return navigate("/");
-  // }
+  if (
+    user &&
+    user.role !== "admin" &&
+    user.role !== "Instructor" &&
+    !user.subscription.includes(params.id)
+  ) {
+    return navigate("/");
+  }
 
   useEffect(() => {
     fetchCourse(params.id);

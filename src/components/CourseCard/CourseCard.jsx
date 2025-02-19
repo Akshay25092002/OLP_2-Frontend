@@ -22,7 +22,7 @@ const CourseCard = ({ course }) => {
           },
         });
 
-        toast.success(data.massage);
+        toast.success("Successfully deleted", data.massage);
         fetchCourses();
       } catch (error) {
         toast.error(error.response.data.massage);
@@ -36,27 +36,37 @@ const CourseCard = ({ course }) => {
       <h3>{course.title}</h3>
       <p>Instructor - {course.createdBy}</p>
       <p>Duration - {course.duration} weeks</p>
+      <p>Price- ₹{course.price}</p>
       {isAuth ? (
         <>
           {user?.role !== "admin" && user?.role !== "Instructor" ? (
+            user?.subscription?.includes(course._id) ? (
+              <button
+                onClick={() => navigate(`/course/study/${course._id}`)}
+                className="common-btn"
+              >
+                Student Study
+              </button>
+            ) : (
+              <button
+                onClick={() => navigate(`/course/${course._id}`)}
+                className="common-btn"
+              >
+                Purchase this course
+              </button>
+            )
+          ) : (
             <button
               onClick={() => navigate(`/course/${course._id}`)}
               className="common-btn"
             >
-              Get Started Study
-            </button>
-          ) : (
-            <button
-              onClick={() => navigate(`/course/study/${course._id}`)}
-              className="common-btn"
-            >
-              Study
+              Study - Instructors/Admin
             </button>
           )}
         </>
       ) : (
         <button onClick={() => navigate("/login")} className="common-btn mx-2">
-          Get Started
+          Get Login Before Start
         </button>
       )}
 

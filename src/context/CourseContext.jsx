@@ -27,7 +27,7 @@ export const CourseContextProvider = ({ children }) => {
     }
   }
 
-  async function fetchMyCourse(id) {
+  async function fetchMyCourse() {
     try {
       const { data } = await axios.get(`${server}/api/myCourse`, {
         headers: {

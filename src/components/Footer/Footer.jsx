@@ -106,7 +106,7 @@ const Footer = () => {
         className="text-center p-4"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
       >
-        © 2025 Copyright:OLP
+        © 2025 Copyright: OLP
       </div>
     </footer>
   );

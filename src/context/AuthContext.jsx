@@ -11,13 +11,6 @@ export const AuthProvider = ({ children }) => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const storedUser = localStorage.getItem("user");
-  //   if (storedUser) {
-  //     setUser(JSON.parse(storedUser));
-  //   }
-  // }, []);
-
   // Login user
   async function loginUser(email, password, navigate, fetchMyCourse) {
     setBtnLoading(true);
@@ -66,7 +59,7 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  async function fetchuser() {
+  async function fetchUser() {
     try {
       const { data } = await axios.get(`${server}/api/user/getuser`, {
         headers: {
@@ -84,7 +77,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    fetchuser();
+    fetchUser();
   }, []);
 
   return (
@@ -98,6 +91,7 @@ export const AuthProvider = ({ children }) => {
         btnLoading,
         loading,
         registerUser,
+        fetchUser,
       }}
     >
       {children}

@@ -11,7 +11,6 @@ const Account = ({ user }) => {
 
   const navigate = useNavigate();
 
-  console.log(user);
   const handleLogout = () => {
     localStorage.clear();
     setUser([]);
