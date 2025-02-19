@@ -84,6 +84,7 @@
 }
 
 .progress {
+  height: auto;
   width: 20%;
   background-color: #333;
   padding: 6px;
